@@ -1,0 +1,19 @@
+[build]
+  publish = "."
+
+# La racine du site sert directement index.html (qui est la landing)
+# Pas besoin de redirection, c'est plus simple
+
+# Pour Netlify : on peut aussi utiliser /app comme alias
+[[redirects]]
+  from = "/app"
+  to = "/app.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
